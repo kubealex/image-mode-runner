@@ -6,6 +6,14 @@ on:
       - '*'
 
 jobs:
+  set_dependencies:
+    runs-on: ubuntu-latest
+    name: Install FuseFS
+    steps:
+       - name: Install packages
+         run: |
+            sudo apt-get update
+            sudo apt-get install fuse
   rhel-bootc-image-build:
     name: Build RHEL bootc image with repo access
     runs-on: ubuntu-latest
