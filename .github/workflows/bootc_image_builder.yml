@@ -108,7 +108,7 @@ jobs:
           -v $(pwd)/output:/output \
           -v /var/lib/containers/storage:/var/lib/containers/storage \
           registry.redhat.io/rhel9/bootc-image-builder:latest \
-          --type qcow2 ${{ steps.build-image.outputs.image }}:latest
+          --type qcow2 ${{ env.DEST_REGISTRY_HOST }}/${{ steps.build-image.outputs.image }}:latest
           
       - name: Clean up the subscription
         if: always()
