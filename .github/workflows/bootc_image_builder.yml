@@ -37,12 +37,12 @@ jobs:
       # DEST_REGISTRY_USER: "${{ github.actor }}"
       # DEST_REGISTRY_PASSWORD: "${{ secrets.GITHUB_TOKEN }}"
 
-    container:
-      image: registry.access.redhat.com/ubi9/ubi
-      options: --privileged
-    permissions:
-      contents: write
-      packages: write
+#    container:
+#      image: registry.access.redhat.com/ubi9/ubi
+#      options: --privileged
+#    permissions:
+#      contents: write
+#      packages: write
 
     steps:
       - name: Clone the repository
