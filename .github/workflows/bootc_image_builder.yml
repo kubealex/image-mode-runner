@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     env:
       # Disable Subscription Manager container passthrough
-      SMDEV_CONTAINER_OFF: 0
+      SMDEV_CONTAINER_OFF: 1
       # Subscription Manager credentials - uses repository secrets
       # RHT_ORGID: "${{ secrets.RHT_ORGID }}"
       # RHT_ACT_KEY: "${{ secrets.RHT_ACT_KEY }}"
@@ -51,8 +51,8 @@ jobs:
       - name: Get container tools in UBI builder
         run: dnf -y install podman buildah skopeo
 
-      - name: Access a subscription via activation key
-        run: subscription-manager register --org=${{ secrets.RHT_ORGID }} --activationkey=${{ secrets.RHT_ACT_KEY }}
+#      - name: Access a subscription via activation key
+#        run: subscription-manager register --org=${{ secrets.RHT_ORGID }} --activationkey=${{ secrets.RHT_ACT_KEY }}
 
       # workaround for https://github.com/redhat-actions/podman-login/issues/42 since the docker config from the host doesn't come up to the container
       - name: Workaround open podman-login action issue
@@ -111,6 +111,6 @@ jobs:
           registry.redhat.io/rhel9/bootc-image-builder:latest \
           --type qcow2 ${{ env.DEST_REGISTRY_HOST }}/${{ steps.build-image.outputs.image }}:latest
           
-      - name: Clean up the subscription
-        if: always()
-        run: subscription-manager unregister
+#      - name: Clean up the subscription
+#        if: always()
+#        run: subscription-manager unregister
