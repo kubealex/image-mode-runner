@@ -40,9 +40,9 @@ jobs:
 #    container:
 #      image: registry.access.redhat.com/ubi9/ubi
 #      options: --privileged
-#    permissions:
-#      contents: write
-#      packages: write
+    permissions:
+      contents: write
+      packages: write
 
     steps:
       - name: Clone the repository
